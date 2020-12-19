@@ -1,0 +1,136 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Mirror;
+using DG.Tweening;
+public class CharacterMovement : NetworkBehaviour
+{
+    public float speed = 5;
+    public float gravity = -5;
+    Animator animator;
+    float velocityY = 0;
+    bool isRun=false;
+    int road1,road2,road3;
+    CharacterController controller;
+    public GameObject egg;
+    public Vector3 LastPoint;
+    Vector3 input;
+    Vector3 temp;
+    Vector3 velocity;
+    public GameObject Cam;
+    //public dg_simpleCamFollow dg_SimpleCamFollow;
+    void Start()
+    {
+        if (isLocalPlayer)
+        {
+            Cam.SetActive(true);
+            transform.position = new Vector3(transform.position.x, transform.position.y, Random.Range(0, 15));
+            LastPoint = transform.position;
+            controller = GetComponent<CharacterController>();
+            controller.enabled = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, Random.Range(0, 15));
+            controller.enabled = true;
+            animator = GetComponent<Animator>();
+            InvokeRepeating("RandomIdleAnimation", Random.Range(1f, 3f), Random.Range(4f, 10f));
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isLocalPlayer)
+        {
+        velocityY += gravity * Time.deltaTime;
+
+        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        input = input.normalized;
+
+        temp = Vector3.zero;
+        if (input.z == 1)
+        {
+            temp += transform.forward;
+            animator.SetBool("Run", true);
+            animator.SetBool("Turn Head", false);
+            animator.SetBool("Eat", false);
+            isRun = true;
+        }
+        else if (input.z == -1)
+        {
+            temp += transform.forward * -1;
+
+            animator.SetBool("Turn Head", false);
+            animator.SetBool("Eat", false);
+            animator.SetBool("Run", true);
+            isRun = true;
+        }
+        else
+        {
+            animator.SetBool("Run", false);
+            isRun = false;            
+        }
+
+        velocity = temp * speed;
+        velocity.y = velocityY;
+
+        controller.Move(velocity * Time.deltaTime);
+        if (controller.isGrounded)
+        {
+            velocityY = 0;
+        }
+
+        if (transform.position.x>0&& road1 == 0)
+        {
+            road1++;
+            LastPoint = transform.position;
+                dg_simpleCamFollow.generalOffset = new Vector3(dg_simpleCamFollow.generalOffset.x, dg_simpleCamFollow.generalOffset.y, dg_simpleCamFollow.generalOffset.z * -1);
+        }
+        else if (transform.position.x > 12.5f && road2 == 0)
+        {
+            road2++;
+            LastPoint = transform.position;
+                dg_simpleCamFollow.generalOffset = new Vector3(dg_simpleCamFollow.generalOffset.x, dg_simpleCamFollow.generalOffset.y, dg_simpleCamFollow.generalOffset.z * -1);
+        }
+        else if (transform.position.x > 29 && road3 == 0)
+        {
+            road3++;
+            LastPoint = transform.position;
+                dg_simpleCamFollow.generalOffset = new Vector3(dg_simpleCamFollow.generalOffset.x, dg_simpleCamFollow.generalOffset.y, dg_simpleCamFollow.generalOffset.z * -1);
+        }
+       
+        }
+
+    }
+
+    void RandomIdleAnimation()
+    {
+        int Rnd = Random.Range(0, 2);
+        if (!isRun)
+        {
+            if (Rnd % 2 == 0)
+            {
+                animator.SetBool("Turn Head", false);
+                animator.SetBool("Run", false);
+                animator.SetBool("Eat", true);
+            }
+            else
+            {
+                animator.SetBool("Run", false);
+                animator.SetBool("Eat", false);
+                animator.SetBool("Turn Head", true);
+            }
+        }    
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag=="Car")
+        {
+            Debug.Log("hello");
+            controller.enabled = false;           
+            Invoke("ReturnLastPoint", 3);
+        }
+    }
+    void ReturnLastPoint()
+    {        
+       transform.position = LastPoint;
+       controller.enabled = true;
+    }
+}
