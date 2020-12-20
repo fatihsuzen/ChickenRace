@@ -578,10 +578,6 @@ GameObject:
   - component: {fileID: 1414205083863536658}
   - component: {fileID: 1414205083862426426}
   - component: {fileID: 1049581630569689812}
-  - component: {fileID: 6704242085282683631}
-  - component: {fileID: 6580606881911339992}
-  - component: {fileID: 705755365086558597}
-  - component: {fileID: 9144507349364708101}
   m_Layer: 0
   m_Name: Truck_2_Purple
   m_TagString: Car
@@ -596,7 +592,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414205083860454922}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.82, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -611,7 +607,7 @@ Transform:
   - {fileID: 1414205083860138090}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &1414205083863536658
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -674,71 +670,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08039329, y: 0.035457246, z: 0.024112996}
   m_Center: {x: -3.8157635e-19, y: -1.4730507e-19, z: 0.00030472517}
---- !u!114 &6704242085282683631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414205083860454922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439daf5650818d144b3a2863352a1140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  way: 0
---- !u!114 &6580606881911339992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414205083860454922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  port: 7777
-  NoDelay: 1
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
---- !u!114 &705755365086558597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414205083860454922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0
---- !u!114 &9144507349364708101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414205083860454922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.01
-  clientAuthority: 1
-  localPositionSensitivity: 0.001
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
 --- !u!1 &1414205083860481426
 GameObject:
   m_ObjectHideFlags: 0

@@ -332,10 +332,6 @@ GameObject:
   - component: {fileID: 6709458381242344419}
   - component: {fileID: 6709458381241285671}
   - component: {fileID: 9175287055582670510}
-  - component: {fileID: 5647006447278510538}
-  - component: {fileID: 2129867562294710741}
-  - component: {fileID: 6513338839761966754}
-  - component: {fileID: 8261618381471401878}
   m_Layer: 0
   m_Name: Car_5_Red
   m_TagString: Car
@@ -350,7 +346,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6709458381239127289}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.9912471, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -360,7 +356,7 @@ Transform:
   - {fileID: 6709458381238831095}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &6709458381242344419
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -423,68 +419,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.048321117, y: 0.016139848, z: 0.016350724}
   m_Center: {x: -0.00011205911, y: 5.9125642e-21, z: -0.00013122261}
---- !u!114 &5647006447278510538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6709458381239127289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439daf5650818d144b3a2863352a1140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  way: 0
---- !u!114 &2129867562294710741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6709458381239127289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  port: 7777
-  NoDelay: 1
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
---- !u!114 &6513338839761966754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6709458381239127289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0
---- !u!114 &8261618381471401878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6709458381239127289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.01
-  clientAuthority: 1
-  localPositionSensitivity: 0.001
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01

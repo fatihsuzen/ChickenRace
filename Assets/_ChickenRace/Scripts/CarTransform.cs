@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
-public class CarTransform : MonoBehaviour
+using Mirror;
+public class CarTransform : NetworkBehaviour
 {
-    public bool way;
+   public bool way;
    public Vector3 posZ;
 
     private void Start()
@@ -23,6 +23,10 @@ public class CarTransform : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position += posZ;
+        if (isServer)
+        {
+            transform.position += posZ;
+        }
+        
     }
 }
