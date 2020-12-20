@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class TransformStartCar : MonoBehaviour
 {
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.gameObject.GetComponent<CarTransform>().way)
+        if (other.gameObject.GetComponent<CarTransform>().way)
         {
-            collision.collider.transform.position = new Vector3(collision.collider.transform.position.x, collision.collider.transform.position.y, -115f);
+            other.transform.position = new Vector3(other.transform.position.x, other.transform.position.y - 5, -115f);
+            other.transform.position = new Vector3(other.transform.position.x, other.transform.position.y + 5, -115f);
         }
         else
         {
-            collision.collider.transform.position = new Vector3(collision.collider.transform.position.x, collision.collider.transform.position.y, 115f);
+            other.transform.position = new Vector3(other.transform.position.x, other.transform.position.y - 5, 115f);
+            other.transform.position = new Vector3(other.transform.position.x, other.transform.position.y + 5, 115f);
         }
-        
     }
 }

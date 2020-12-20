@@ -18,7 +18,7 @@ public class CharacterMovement : NetworkBehaviour
     Vector3 temp;
     Vector3 velocity;
     public GameObject Cam;
-    //public dg_simpleCamFollow dg_SimpleCamFollow;
+    //public ParticleSystem particle;
     void Start()
     {
         if (isLocalPlayer)
@@ -81,19 +81,20 @@ public class CharacterMovement : NetworkBehaviour
         {
             road1++;
             LastPoint = transform.position;
-                dg_simpleCamFollow.generalOffset = new Vector3(dg_simpleCamFollow.generalOffset.x, dg_simpleCamFollow.generalOffset.y, dg_simpleCamFollow.generalOffset.z * -1);
+            
         }
         else if (transform.position.x > 12.5f && road2 == 0)
         {
             road2++;
             LastPoint = transform.position;
-                dg_simpleCamFollow.generalOffset = new Vector3(dg_simpleCamFollow.generalOffset.x, dg_simpleCamFollow.generalOffset.y, dg_simpleCamFollow.generalOffset.z * -1);
-        }
+                Cam.transform.DOLocalRotate(new Vector3(0, -75, 0), 1.5f);
+                Cam.transform.DOLocalMoveX(2, 1f);
+            }
         else if (transform.position.x > 29 && road3 == 0)
         {
             road3++;
             LastPoint = transform.position;
-                dg_simpleCamFollow.generalOffset = new Vector3(dg_simpleCamFollow.generalOffset.x, dg_simpleCamFollow.generalOffset.y, dg_simpleCamFollow.generalOffset.z * -1);
+           
         }
        
         }
@@ -121,16 +122,18 @@ public class CharacterMovement : NetworkBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag=="Car")
+        if (collision.collider.tag == "Car")
         {
             Debug.Log("hello");
-            controller.enabled = false;           
+            controller.enabled = false;
+            egg.SetActive(true);
             Invoke("ReturnLastPoint", 3);
         }
     }
     void ReturnLastPoint()
-    {        
-       transform.position = LastPoint;
-       controller.enabled = true;
+    {
+        transform.position = LastPoint;
+        controller.enabled = true;
+        egg.SetActive(false);
     }
 }
