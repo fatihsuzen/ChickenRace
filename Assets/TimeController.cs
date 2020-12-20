@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class TimeController : NetworkBehaviour
 {
     public Text TimeText;
-    private int Time=60;
+    public static int Time=60;
     void Start()
     {
-        InvokeRepeating("TimeCountDown",0,1);
+        
+            InvokeRepeating("TimeCountDown", 0, 1);
+        
+        InvokeRepeating("TimeUpdate", 0, 1);
     }
+
     void TimeCountDown()
     {
         Time--;
@@ -22,6 +26,11 @@ public class TimeController : NetworkBehaviour
         if (Time == 0)
         {
             CancelInvoke("TimeCountDown");
+            //openscoreboard
         }
+    }
+    void TimeUpdate()
+    {
+        TimeText.text = Time.ToString();
     }
 }

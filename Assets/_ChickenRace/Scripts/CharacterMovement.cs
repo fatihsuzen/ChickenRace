@@ -124,7 +124,6 @@ public class CharacterMovement : NetworkBehaviour
     {
         if (collision.collider.tag == "Car")
         {
-            Debug.Log("hello");
             controller.enabled = false;
             egg.SetActive(true);
             Invoke("ReturnLastPoint", 3);
