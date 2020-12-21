@@ -5,18 +5,17 @@ using Mirror;
 using UnityEngine.UI;
 public class Ranking : NetworkBehaviour
 {
+    public Text RankText;
+    public GameObject network;
+    
+    public int PlayerCount;
     void Start()
     {
-        
+        InvokeRepeating("PlayerRank",0,1);
     }
     void PlayerRank()
     {
-        foreach (var gameObj in FindObjectsOfType(typeof(GameObject))as GameObject[])
-        {
-            if (gameObj.name == "")
-            {
-
-            }
-        }
+        PlayerCount = network.GetComponent<NetworkManager>().numPlayers;
+        RankText.text = PlayerCount.ToString();
     }
 }

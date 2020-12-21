@@ -22,11 +22,7 @@ public class CarTransform : NetworkBehaviour
         //transform.DOMoveZ(transform.position.z +  300f, 15f).SetLoops(0, LoopType.Yoyo).SetEase(Ease.Linear);
     }
     private void FixedUpdate()
-    {
-        if (isServer)
-        {
-            transform.position += posZ;
-        }
-        
+    {        
+       transform.position += posZ;    
     }
 }
