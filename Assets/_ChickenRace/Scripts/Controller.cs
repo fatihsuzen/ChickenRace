@@ -13,7 +13,7 @@ public class Controller : NetworkBehaviour
     public static int PlayerCount;
     int PlayerRankNo;
     public GameObject network;
-    public static List<GameObject> PlayerRankList = new List<GameObject>();
+
     void Start()
     {
        

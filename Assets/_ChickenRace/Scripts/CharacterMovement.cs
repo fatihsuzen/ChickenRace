@@ -32,6 +32,8 @@ public class CharacterMovement : NetworkBehaviour
     float[] PlayerPosX = new float[20];
     float backUp;
     GameObject backUpPlayer;
+
+    public List<GameObject> PlayerRankTextList = new List<GameObject>();
     //public ParticleSystem particle;
     void Start()
     {       
@@ -60,6 +62,8 @@ public class CharacterMovement : NetworkBehaviour
 
             audioSource.clip = AudioList[0];
             audioSource.Play();
+
+            
         }
     }
     void FixedUpdate()
@@ -138,6 +142,16 @@ public class CharacterMovement : NetworkBehaviour
             {
                 PlayerRankNo = i+1;
             }
+            
+        }
+        for (int i = 0; i < 16; i++)
+        {
+            int x = i + 1;
+            PlayerRankTextList[i] = GameObject.Find(x+"").gameObject;
+        }
+        for (int i = 0; i < someObjects.Length; i++)
+        {
+            PlayerRankTextList[i].GetComponent<Text>().text = (i+1) + "-" + someObjects[i].name;
         }
         RankText.text = PlayerRankNo.ToString() + "/"+ someObjects.Length; //Controller.PlayerCount.ToString();
     }
@@ -214,6 +228,13 @@ public class CharacterMovement : NetworkBehaviour
             audioSource.clip = AudioList[1];
             audioSource.Play();
             Invoke("ReturnLastPoint", 3);
+        }
+        if (collision.collider.tag == "Finish")
+        {
+            for (int i = 0; i < someObjects.Length; i++)
+            {
+                PlayerRankTextList[i].GetComponent<Text>().text = i+"-"+someObjects[i].name;
+            }
         }
     }
   

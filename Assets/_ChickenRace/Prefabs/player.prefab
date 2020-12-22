@@ -288,9 +288,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 02a575206171cda4e986f459c095d658, type: 3}
   Cam: {fileID: 5802583301495207282}
   egg: {fileID: 7018898005556473607}
-  RankText: {fileID: 7193047433530907921, guid: 9a183b335c5ddea4e99a1b38ca69191b,
-    type: 3}
+  playerList: []
   PlayerRankNo: 0
+  someObjects: []
+  PlayerRankTextList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &-6352729118357374445
 MonoBehaviour:
   m_ObjectHideFlags: 0
