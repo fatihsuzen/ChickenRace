@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
 using DG.Tweening;
 public class CharacterMovement : NetworkBehaviour
 {
@@ -10,9 +11,9 @@ public class CharacterMovement : NetworkBehaviour
     Animator animator;
     float velocityY = 0;
     bool isRun=false;
+    bool eggAnimIsPlaying = false;
     int road1,road2,road3;
-    CharacterController controller;
-    public GameObject egg;
+    CharacterController controller;    
     public Vector3 LastPoint;
     Vector3 input;
     Vector3 temp;
@@ -20,27 +21,47 @@ public class CharacterMovement : NetworkBehaviour
     public List<AudioClip> AudioList = new List<AudioClip>();
     AudioSource audioSource;
     public GameObject Cam;
+    public GameObject egg;
+
+    Text RankText;
+    public static List<GameObject> PlayerList = new List<GameObject>();
+    public List<GameObject> playerList = new List<GameObject>();
+    public int PlayerRankNo;
     //public ParticleSystem particle;
     void Start()
     {       
         if (isLocalPlayer)
         {
-            Cam.SetActive(true);
+            this.gameObject.name = "client";
+
+            RankText = GameObject.Find("ScoreText").GetComponent<Text>();
+
+            controller = GetComponent<CharacterController>();
+            animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
+
+           
             transform.position = new Vector3(transform.position.x, transform.position.y, Random.Range(0, 15));
             LastPoint = transform.position;
-            controller = GetComponent<CharacterController>();
+            
             controller.enabled = false;
             transform.position = new Vector3(transform.position.x, transform.position.y, Random.Range(0, 15));
             controller.enabled = true;
-            animator = GetComponent<Animator>();
+            Cam.SetActive(true);
+
             InvokeRepeating("RandomIdleAnimation", Random.Range(1f, 3f), Random.Range(4f, 10f));
             InvokeRepeating("CheckPoint",2,0.33f);
-            audioSource = GetComponent<AudioSource>();
+            InvokeRepeating("PlayerRank", 0, 0.33f);
+            InvokeRepeating("asd", 0, 0.33f);
+
             audioSource.clip = AudioList[0];
             audioSource.Play();
         }
     }
-
+    void asd()
+    {
+        playerList = PlayerList;
+    }
     void FixedUpdate()
     {
         if (isLocalPlayer)
@@ -51,7 +72,7 @@ public class CharacterMovement : NetworkBehaviour
         input = input.normalized;
 
         temp = Vector3.zero;
-        if (input.z == 1)
+        if (input.z == 1 && !eggAnimIsPlaying)
         {
             temp += transform.forward;
             animator.SetBool("Run", true);
@@ -60,7 +81,7 @@ public class CharacterMovement : NetworkBehaviour
             isRun = true;
             RunSound();
         }
-        else if (input.z == -1)
+        else if (input.z == -1 && !eggAnimIsPlaying)
         {
             temp += transform.forward * -1;
 
@@ -87,6 +108,10 @@ public class CharacterMovement : NetworkBehaviour
 
         }
 
+    }
+    void PlayerRank()
+    {
+        RankText.text = PlayerRankNo.ToString() + "/" + Controller.PlayerCount.ToString();
     }
     void CheckPoint()
     {
@@ -138,24 +163,30 @@ public class CharacterMovement : NetworkBehaviour
             }
         }    
     }
+    void ReturnLastPoint()
+    {
+        transform.position = LastPoint;
+        controller.enabled = true;
+
+        animator.SetBool("Egg", false);
+        eggAnimIsPlaying = false;
+        InvokeRepeating("RandomIdleAnimation", Random.Range(1f, 3f), Random.Range(4f, 10f));
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Car")
         {
             controller.enabled = false;
-            egg.SetActive(true);
+
+            animator.SetBool("Egg", true);
+            eggAnimIsPlaying = true;
+            CancelInvoke("RandomIdleAnimation");
 
             audioSource.Stop();
             audioSource.clip = AudioList[1];
             audioSource.Play();
-
             Invoke("ReturnLastPoint", 3);
         }
     }
-    void ReturnLastPoint()
-    {
-        transform.position = LastPoint;
-        controller.enabled = true;
-        egg.SetActive(false);
-    }
+  
 }

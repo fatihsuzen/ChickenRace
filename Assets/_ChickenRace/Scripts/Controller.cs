@@ -7,13 +7,16 @@ public class Controller : NetworkBehaviour
 {
     public Text TimeText;
     [SyncVar]
-    private int Time = 45, PlayerCount;
+    private int Time = 45;
+    [SyncVar]
+    public int playerCount;
+    public static int PlayerCount;
     int PlayerRankNo;
-    public Text RankText;
     public GameObject network;
+    public List<GameObject> PlayerRankList = new List<GameObject>();
     void Start()
     {
-
+       
         if (isServer)
         {
             InvokeRepeating("TimeCountDown", 0, 1);
@@ -26,21 +29,17 @@ public class Controller : NetworkBehaviour
     {
         if (isServer)
         {
-            PlayerCount = network.GetComponent<NetworkManager>().numPlayers;
+            playerCount = network.GetComponent<NetworkManager>().numPlayers;
         }
-        /*foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
+        foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
         {
             if (gameObj.name == "player(Clone)")
             {
-                PlayerRankNo++;
+                PlayerRankList.Add(gameObj);
             }
-        }*/
-        RankController();
-        RankText.text = PlayerRankNo.ToString() + "/" + PlayerCount.ToString();
-    }
-    void RankController()
-    {
-
+        }
+        PlayerCount = playerCount;
+        
     }
     void TimeCountDown()
     {
