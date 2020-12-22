@@ -33,11 +33,14 @@ public class Controller : NetworkBehaviour
         }
         foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
         {
+           
             if (gameObj.name == "player(Clone)")
             {
                 PlayerRankList.Add(gameObj);
             }
         }
+        
+        //Debug.Log(conn);
         PlayerCount = playerCount;
         
     }

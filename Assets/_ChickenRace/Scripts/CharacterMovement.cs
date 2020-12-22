@@ -24,15 +24,20 @@ public class CharacterMovement : NetworkBehaviour
     public GameObject egg;
 
     Text RankText;
+    [SerializeField]
     public static List<GameObject> PlayerList = new List<GameObject>();
     public List<GameObject> playerList = new List<GameObject>();
     public int PlayerRankNo;
+    public GameObject[] someObjects;
+    float[] PlayerPosX = new float[20];
+    float backUp;
+    GameObject backUpPlayer;
     //public ParticleSystem particle;
     void Start()
     {       
         if (isLocalPlayer)
         {
-            this.gameObject.name = "client";
+            this.gameObject.name = "LocalPlayer";
 
             RankText = GameObject.Find("ScoreText").GetComponent<Text>();
 
@@ -51,16 +56,11 @@ public class CharacterMovement : NetworkBehaviour
 
             InvokeRepeating("RandomIdleAnimation", Random.Range(1f, 3f), Random.Range(4f, 10f));
             InvokeRepeating("CheckPoint",2,0.33f);
-            InvokeRepeating("PlayerRank", 0, 0.33f);
-            InvokeRepeating("asd", 0, 0.33f);
+            InvokeRepeating("PlayerRank", 1, 0.33f);
 
             audioSource.clip = AudioList[0];
             audioSource.Play();
         }
-    }
-    void asd()
-    {
-        playerList = PlayerList;
     }
     void FixedUpdate()
     {
@@ -111,7 +111,35 @@ public class CharacterMovement : NetworkBehaviour
     }
     void PlayerRank()
     {
-        RankText.text = PlayerRankNo.ToString() + "/" + Controller.PlayerCount.ToString();
+        
+        someObjects = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < someObjects.Length; i++)
+        {
+            PlayerPosX[i] = someObjects[i].transform.position.x;
+        }
+        for (int i = 0; i < someObjects.Length; i++)
+        {
+            for (int j = i + 1; j < someObjects.Length; j++)
+            {
+                if (PlayerPosX[j] > PlayerPosX[i])
+                {
+                    backUp = PlayerPosX[i];
+                    backUpPlayer = someObjects[i];
+
+                    PlayerPosX[i] = PlayerPosX[j];
+                    someObjects[i] = someObjects[j];
+
+                    PlayerPosX[j] = backUp;
+                    someObjects[j] = backUpPlayer;
+                }
+                
+            }
+            if (someObjects[i].name == "LocalPlayer")
+            {
+                PlayerRankNo = i+1;
+            }
+        }
+        RankText.text = PlayerRankNo.ToString() + "/"+ someObjects.Length; //Controller.PlayerCount.ToString();
     }
     void CheckPoint()
     {
