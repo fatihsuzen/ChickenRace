@@ -13,7 +13,7 @@ public class Controller : NetworkBehaviour
     public static int PlayerCount;
     int PlayerRankNo;
     public GameObject network;
-    public List<GameObject> PlayerRankList = new List<GameObject>();
+    public static List<GameObject> PlayerRankList = new List<GameObject>();
     void Start()
     {
        
@@ -30,14 +30,6 @@ public class Controller : NetworkBehaviour
         if (isServer)
         {
             playerCount = network.GetComponent<NetworkManager>().numPlayers;
-        }
-        foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
-        {
-           
-            if (gameObj.name == "player(Clone)")
-            {
-                PlayerRankList.Add(gameObj);
-            }
         }
         
         //Debug.Log(conn);
