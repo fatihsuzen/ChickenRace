@@ -35,8 +35,10 @@ public class CharacterMovement : NetworkBehaviour
 
     public List<GameObject> PlayerRankTextList = new List<GameObject>();
 
-    [SerializeField]
-    public static Text NickName; 
+    
+    public Text NickName;
+    [SyncVar]
+    public string NickNameString;
     //public ParticleSystem particle;
     void Start()
     {       

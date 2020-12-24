@@ -521,6 +521,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  NickName: {fileID: 3633031151650418193}
+  NickNameString: 
 --- !u!114 &-6352729118357374445
 MonoBehaviour:
   m_ObjectHideFlags: 0
