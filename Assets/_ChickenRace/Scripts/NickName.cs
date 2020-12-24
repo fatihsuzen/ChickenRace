@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class NickName : MonoBehaviour
+using Mirror;
+public class NickName : NetworkBehaviour
 {
+    private string nickName;
     public Text nickNameText;
-    public static string nickName;
     public void PlayBtn()
     {
-        nickName = nickNameText.text; 
+        nickName = nickNameText.text;
+        CharacterMovement.NickName = GameObject.Find("playerNickName").GetComponent<Text>();
+        CharacterMovement.NickName.text = nickNameText.text;
+
+        Debug.Log(nickName);
     }
 }

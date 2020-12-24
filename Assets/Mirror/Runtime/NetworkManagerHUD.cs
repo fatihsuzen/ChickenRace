@@ -1,7 +1,7 @@
 // vis2k: GUILayout instead of spacey += ...; removed Update hotkeys to avoid
 // confusion if someone accidentally presses one.
 using UnityEngine;
-
+using UnityEngine.UI;
 namespace Mirror
 {
     /// <summary>
@@ -21,6 +21,7 @@ namespace Mirror
         /// </summary>
         public bool showGUI = true;
 
+        public static Text NickName;
         /// <summary>
         /// The horizontal offset in pixels to draw the HUD runtime GUI at.
         /// </summary>

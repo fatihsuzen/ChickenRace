@@ -35,12 +35,14 @@ public class CharacterMovement : NetworkBehaviour
 
     public List<GameObject> PlayerRankTextList = new List<GameObject>();
 
-    public static Text NickName;
+    [SerializeField]
+    public static Text NickName; 
     //public ParticleSystem particle;
     void Start()
     {       
         if (isLocalPlayer)
         {
+            
             this.gameObject.name = "LocalPlayer";
 
             //RankText = GameObject.Find("ScoreText").GetComponent<Text>();
