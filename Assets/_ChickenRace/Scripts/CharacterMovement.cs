@@ -41,7 +41,7 @@ public class CharacterMovement : NetworkBehaviour
         {
             this.gameObject.name = "LocalPlayer";
 
-            RankText = GameObject.Find("ScoreText").GetComponent<Text>();
+            //RankText = GameObject.Find("ScoreText").GetComponent<Text>();
 
             controller = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
@@ -144,7 +144,7 @@ public class CharacterMovement : NetworkBehaviour
             }
             
         }
-        for (int i = 0; i < 16; i++)
+        /*for (int i = 0; i < 16; i++)
         {
             int x = i + 1;
             PlayerRankTextList[i] = GameObject.Find(x+"").gameObject;
@@ -152,8 +152,8 @@ public class CharacterMovement : NetworkBehaviour
         for (int i = 0; i < someObjects.Length; i++)
         {
             PlayerRankTextList[i].GetComponent<Text>().text = (i+1) + "-" + someObjects[i].name;
-        }
-        RankText.text = PlayerRankNo.ToString() + "/"+ someObjects.Length; //Controller.PlayerCount.ToString();
+        }*/
+        //RankText.text = PlayerRankNo.ToString() + "/"+ someObjects.Length; //Controller.PlayerCount.ToString();
     }
     void CheckPoint()
     {
