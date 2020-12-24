@@ -34,6 +34,8 @@ public class CharacterMovement : NetworkBehaviour
     GameObject backUpPlayer;
 
     public List<GameObject> PlayerRankTextList = new List<GameObject>();
+
+    public static Text NickName;
     //public ParticleSystem particle;
     void Start()
     {       
@@ -42,7 +44,7 @@ public class CharacterMovement : NetworkBehaviour
             this.gameObject.name = "LocalPlayer";
 
             //RankText = GameObject.Find("ScoreText").GetComponent<Text>();
-
+           
             controller = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
@@ -237,5 +239,6 @@ public class CharacterMovement : NetworkBehaviour
             }
         }
     }
+
   
 }
