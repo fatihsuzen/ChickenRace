@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4497960740402167375}
   - component: {fileID: 1875631068034012127}
   - component: {fileID: 3633031151650418193}
+  - component: {fileID: 8775553303328822356}
   m_Layer: 5
   m_Name: playerNickName
   m_TagString: Untagged
@@ -78,6 +79,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Sonsultan
+--- !u!114 &8775553303328822356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2245755383456221195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &5034238575791232211
 GameObject:
   m_ObjectHideFlags: 0

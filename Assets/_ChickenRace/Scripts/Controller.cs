@@ -13,7 +13,7 @@ public class Controller : NetworkBehaviour
     public static int PlayerCount;
     int PlayerRankNo;
     public GameObject network;
-
+    public GameObject Cam;
     void Start()
     {
        
@@ -62,5 +62,9 @@ public class Controller : NetworkBehaviour
             CancelInvoke("TimeCountDown");
             //openscoreboard
         }
+    }
+    void Camera()
+    {
+        Cam.SetActive(false);
     }
 }
