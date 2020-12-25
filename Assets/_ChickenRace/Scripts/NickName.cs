@@ -9,6 +9,7 @@ public class NickName : NetworkBehaviour
     private string nickName;
     public Text nickNameText;
     CharacterMovement characterMovement;
+    
     public void PlayBtn()
     {
         characterMovement = GameObject.Find("LocalPlayer").GetComponent<CharacterMovement>();
