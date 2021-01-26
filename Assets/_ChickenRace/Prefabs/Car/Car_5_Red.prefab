@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3364544}
   - component: {fileID: 2328836}
   - component: {fileID: 2470754564852833165}
+  - component: {fileID: -1515497246114309187}
   m_Layer: 0
   m_Name: Car_5_Red
   m_TagString: Car
@@ -179,6 +180,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.048321117, y: 0.016139848, z: 0.016350724}
   m_Center: {x: -0.00011205911, y: 5.9125642e-21, z: -0.00013122261}
+--- !u!208 &-1515497246114309187
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162266}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.025, y: 0.0045, z: 0.009}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &166266
 GameObject:
   m_ObjectHideFlags: 0

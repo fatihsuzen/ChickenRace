@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Mirror;
-public class NickName : NetworkBehaviour
+public class NickName : MonoBehaviour
 {
-    [SyncVar]
+    
     private string nickName;
     public Text nickNameText;
     CharacterMovement characterMovement;

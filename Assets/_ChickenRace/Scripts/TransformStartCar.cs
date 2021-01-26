@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
-public class TransformStartCar : NetworkBehaviour
+public class TransformStartCar : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {

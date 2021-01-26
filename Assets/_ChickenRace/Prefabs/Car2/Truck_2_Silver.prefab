@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 7196232073594253269}
   - component: {fileID: 7196232073593264381}
   - component: {fileID: 2308670875499930820}
+  - component: {fileID: -7650500882815584232}
   m_Layer: 0
   m_Name: Truck_2_Silver
   m_TagString: Car
@@ -428,6 +429,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08039329, y: 0.035457246, z: 0.024112996}
   m_Center: {x: -3.8157635e-19, y: -1.4730507e-19, z: 0.00030472517}
+--- !u!208 &-7650500882815584232
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7196232073595237837}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.025, y: 0.0045, z: 0.009}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7196232073595242535
 GameObject:
   m_ObjectHideFlags: 0

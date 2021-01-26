@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 3348814}
   - component: {fileID: 2305816}
   - component: {fileID: 9190975697659069438}
+  - component: {fileID: 1199684847895388339}
   m_Layer: 0
   m_Name: Car_4_Purple
   m_TagString: Car
@@ -259,6 +260,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.045070462, y: 0.02008486, z: 0.018246392}
   m_Center: {x: -0.00031260014, y: 0.00016216873, z: 0.0003112495}
+--- !u!208 &1199684847895388339
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140570}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.025, y: 0.0045, z: 0.009}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &168118
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,38 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 using UnityEngine.UI;
-public class Controller : NetworkBehaviour
+using UnityEngine.SceneManagement;
+public class Controller : MonoBehaviour
 {
-    public Text TimeText;
-    [SyncVar]
-    private int Time = 45;
-    [SyncVar]
+    public Text TimeText;    
+    private int Time = 80;    
     public int playerCount;
     public static int PlayerCount;
     int PlayerRankNo;
-    public GameObject network;
     public GameObject Cam;
     void Start()
     {
        
-        if (isServer)
-        {
             InvokeRepeating("TimeCountDown", 0, 1);
-        }
+        
 
         InvokeRepeating("TimeUpdate", 0, 1);
         InvokeRepeating("PlayerRank", 0, 0.33f);
     }
     void PlayerRank()
     {
-        if (isServer)
-        {
-            playerCount = network.GetComponent<NetworkManager>().numPlayers;
-        }
         
-        //Debug.Log(conn);
+        playerCount = 10;
+        
         PlayerCount = playerCount;
         
     }
@@ -47,7 +39,8 @@ public class Controller : NetworkBehaviour
         if (Time == 0)
         {
             CancelInvoke("TimeCountDown");
-            //openscoreboard
+            //openfin-ishscene
+            SceneManager.LoadScene("finish");
         }
     }
     void TimeUpdate()

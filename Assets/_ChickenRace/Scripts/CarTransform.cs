@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Mirror;
-public class CarTransform : NetworkBehaviour
+public class CarTransform : MonoBehaviour
 {
    public bool way;
    public Vector3 posZ;

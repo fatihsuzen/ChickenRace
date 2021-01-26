@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 5824203738719119857}
   - component: {fileID: 5824203738718259413}
   - component: {fileID: 9058119396674076461}
+  - component: {fileID: -2194318233550995772}
   m_Layer: 0
   m_Name: Bus_Yellow
   m_TagString: Car
@@ -259,6 +260,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.101776406, y: 0.024430007, z: 0.021643752}
   m_Center: {x: -0.007681153, y: -0.0010645818, z: 0.00016611099}
+--- !u!208 &-2194318233550995772
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5824203738720202695}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.06, y: 0.0045, z: 0.011}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5824203738720227429
 GameObject:
   m_ObjectHideFlags: 0

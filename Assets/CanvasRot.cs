@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
-public class CanvasRot : NetworkBehaviour
+public class CanvasRot : MonoBehaviour
 {
     public Transform mainCameraTransform;
     void Start()

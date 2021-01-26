@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4216980574668861565}
   - component: {fileID: 4216980574667861945}
   - component: {fileID: 433542231943429975}
+  - component: {fileID: -6849722561613879147}
   m_Layer: 0
   m_Name: Car_5_Silver 1
   m_TagString: Car
@@ -99,6 +100,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.048321117, y: 0.016139848, z: 0.016350724}
   m_Center: {x: -0.00011205911, y: 5.9125642e-21, z: -0.00013122261}
+--- !u!208 &-6849722561613879147
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216980574669971303}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.025, y: 0.0045, z: 0.009}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4216980574670003413
 GameObject:
   m_ObjectHideFlags: 0

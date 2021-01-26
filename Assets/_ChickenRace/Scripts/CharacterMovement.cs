@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 using UnityEngine.UI;
 using DG.Tweening;
-public class CharacterMovement : NetworkBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     public float speed = 5;
     public float gravity = -5;
@@ -37,15 +36,13 @@ public class CharacterMovement : NetworkBehaviour
 
     
     public Text NickName;
-    [SyncVar]
     public string NickNameString;
     //public ParticleSystem particle;
     void Start()
     {       
-        if (isLocalPlayer)
-        {
+        
             
-            this.gameObject.name = "LocalPlayer";
+            this.gameObject.name = "YOU";
 
             //RankText = GameObject.Find("ScoreText").GetComponent<Text>();
            
@@ -66,16 +63,16 @@ public class CharacterMovement : NetworkBehaviour
             InvokeRepeating("CheckPoint",2,0.33f);
             InvokeRepeating("PlayerRank", 1, 0.33f);
 
-            audioSource.clip = AudioList[0];
-            audioSource.Play();
+            //audioSource.clip = AudioList[0];
+            //audioSource.Play();
 
             
-        }
+        
     }
     void FixedUpdate()
     {
-        if (isLocalPlayer)
-        {
+        
+
         velocityY += gravity * Time.deltaTime;
 
         input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -89,7 +86,7 @@ public class CharacterMovement : NetworkBehaviour
             animator.SetBool("Turn Head", false);
             animator.SetBool("Eat", false);
             isRun = true;
-            RunSound();
+            //RunSound();
         }
         else if (input.z == -1 && !eggAnimIsPlaying)
         {
@@ -99,7 +96,7 @@ public class CharacterMovement : NetworkBehaviour
             animator.SetBool("Eat", false);
             animator.SetBool("Run", true);
             isRun = true;
-            RunSound();
+            //RunSound();
         }
         else
         {
@@ -116,7 +113,7 @@ public class CharacterMovement : NetworkBehaviour
             velocityY = 0;
         }
 
-        }
+        
 
     }
     void PlayerRank()
@@ -187,8 +184,8 @@ public class CharacterMovement : NetworkBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            audioSource.clip = AudioList[2];
-            audioSource.Play();
+            //audioSource.clip = AudioList[2];
+            //audioSource.Play();
         }
         
     }
@@ -230,16 +227,16 @@ public class CharacterMovement : NetworkBehaviour
             eggAnimIsPlaying = true;
             CancelInvoke("RandomIdleAnimation");
 
-            audioSource.Stop();
-            audioSource.clip = AudioList[1];
-            audioSource.Play();
+            //audioSource.Stop();
+            //audioSource.clip = AudioList[1];
+            //audioSource.Play();
             Invoke("ReturnLastPoint", 3);
         }
         if (collision.collider.tag == "Finish")
         {
             for (int i = 0; i < someObjects.Length; i++)
             {
-                PlayerRankTextList[i].GetComponent<Text>().text = i+"-"+someObjects[i].name;
+                //PlayerRankTextList[i].GetComponent<Text>().text = i+"-"+someObjects[i].name;
             }
         }
     }
